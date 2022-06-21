@@ -1,0 +1,37 @@
+HELLO
+<!--    
+<div style="width: 50%;  margin-left:25%;">
+    <mat-card *ngFor="let user of sortBy('id')" class="card"   
+    [ngClass]="{
+        'uActivated' : user.activated,
+        'uNonActivated' : !user.activated
+    }">
+        <div>
+            
+            <div>
+                <img *ngIf="blogEntry.headerImage !== null; else placeholderImage"
+                    src="{{origin}}/api/blog-entries/image/{{blogEntry.headerImage}}">
+                <ng-template #placeholderImage>
+                    <img src="../../../assets/placeholders/placeholder-blog-entry.png">
+                </ng-template>
+            </div> 
+            <div style="margin-left:30px;">
+                <button mat-flat-button color="primary" class="btn-float-right" (click)="navigate(user.id)">{{ user.activated? 'Desactivate' : 'Activate' }}</button>
+                <h2>#{{user.id}} {{user.username}} [{{user.role.name}}]</h2>
+                
+              <p> activated:{{user.activated}}</p> 
+                <small>{{user.email}}, since {{user.d_creation}}</small>
+ (click)="onItemClick($event, user)" 
+            </div>
+        </div>
+    </mat-card>
+
+     <mat-paginator
+    [length]="blogEntries?.meta.totalItems" 
+    [pageSize]="blogEntries?.meta.itemsPerPage" 
+    [pageSizeOptions]="[5,10,25,100]"
+    (page)="pageEvent = $event; onPaginateChange($event)"
+    showFirstLastButtons>
+    </mat-paginator> 
+
+</div>-->

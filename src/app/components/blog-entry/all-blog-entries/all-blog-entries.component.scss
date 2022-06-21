@@ -1,0 +1,42 @@
+// img {
+//     border: 1px solid #ddd;
+//     border-radius: 4px;
+//     padding: 5px;
+//     width: 150px;
+// }
+
+.card {
+    margin-top: 15px;
+    :hover {
+        cursor: pointer;
+    }
+}
+
+.mat-button-wrapper {
+    margin-right: 15px;
+}
+
+
+
+.uActivated{
+    // border-color: rgb(20, 92, 173) !important;
+    background-color: rgba(20, 92, 173, 0.8) !important;
+}
+
+.uNonActivated{   
+    background-color: rgba(66, 24, 218, 0.719) !important;
+}
+
+.btn-float-right{
+    // margin-top: 15px;
+    width: 15%;
+	float: right;
+}
+
+.btn-activate{   
+    background-color: rgba(20, 43, 173, 0.945)  primary !important;
+}
+
+.btn-desactivate{
+    background-color: rgba(64, 17, 233, 0.918) !important;
+}

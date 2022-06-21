@@ -1,0 +1,186 @@
+<div class="popular-categories">
+    <div *ngIf="(user)" class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- <div class="section-heading">
+            <h2>Popular Categories</h2>
+            <h6>Check Them Out</h6>
+          </div> -->
+        </div>
+        <div class="col-lg-12">
+          <div class="naccs">
+            <div class="grid">
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="menu">
+                    <div class="first-thumb active">
+                      <div class="thumb">
+                        <span class="icon"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        </span>
+                        Personal data
+                      </div>
+                    </div>
+                    <div>
+                      <div class="thumb">                 
+                        <span class="icon"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </span>
+                        Edit data
+                      </div>
+                    </div>
+                    <div>
+                      <div class="thumb">                 
+                        <span class="icon"><i class="fa fa-pie-chart" aria-hidden="true"></i>
+                        </span>
+                        Stats &amp; Graphs
+                      </div>
+                    </div>
+                    <div>
+                      <div class="thumb">                 
+                        <span class="icon"><i class="fa fa-question" aria-hidden="true"></i>
+                        </span>
+                        Undefined yet
+                      </div>
+                    </div>
+                    <div class="last-thumb">
+                      <div class="thumb">                 
+                        <span class="icon"><i class="fa fa-question" aria-hidden="true"></i>
+                        </span>
+                        Undefined yet
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="col-lg-9 align-self-center">
+                  <ul class="nacc">
+                    <li class="active">
+                      <div>
+                        <div class="thumb">
+                          <div class="row main-block">
+                               
+                            <div class="col-lg-5 align-self-center">
+                              <div class="left-text">
+                                <h4>#{{ user.id }} {{ user.pseudo }}, {{user.role.name}}</h4>
+                                <p>{{user.role.name}} - {{user.role.description}} [ {{user.role.id}}/5  ]</p>
+                                
+                                <p>Registered with e-mail {{user.email}} since {{user.d_creation | date: 'dd/MM/yyyy'}}. This user is {{  user.activated? 'not' : '' }} activated. Nothing more to say for now.</p>
+                                <div class="main-white-button"><a href="#"><i class="fa fa-eye"></i> Random button</a></div>
+                              </div>
+                            </div>
+                            <div class="col-lg-7 align-self-center">
+                              <div class="right-image">
+                                <img src="../..//images/register-bg.jpg" alt="sqd">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="thumb">
+                          <div class="row main-block">
+                            <div class="col-lg-5 align-self-center">
+                              <div class="left-text">
+                                <h4>Food and Lifestyle category is here</h4>
+                                <p>You can feel free to download, edit and apply this template for your website. Please tell your friends about TemplateMo website.</p>
+                                
+                              </div>
+                            </div>
+                            <div class="col-lg-7 align-self-center">
+                              <div class="right-image">
+                                <!-- <img src="../..//images/pencils-bg.jpg" alt="Foods on the table"> -->
+                                <div class="main-white-button"><a href="#"><i class="fa fa-eye"></i> Explore More</a></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="thumb">
+                          <div class="row main-block">
+                            <div class="col align-self-center">
+
+                                <app-double-line-chart 
+                                [chart_label]="listAllLabelsToDisplayInChart" 
+                                [chart_line_label]="['succeeded', 'failed']"
+                                [chart_first_line_value]="listValueForConnectionSucceeded"
+                                [chart_second_line_value]="listValueForConnectionFailed"
+                              ></app-double-line-chart>
+                              
+                              <!-- <div class="right-image"> -->
+                              <div class="right-pies">
+                                <div class='flx'>
+                                  Connected {{ nbOfLoggedDays }} 
+                                  <div class="flx-item">
+                                    days out of {{ totalDays }}
+                                    <svg class="circle-progress" viewBox="0 0 36 36">
+                                      <path class='circle-path' d="M18 2a16 16 0 010 32 16 16 0 010-32" attr.stroke-dasharray="{{ratioNumberLoggedDays}}, 100"></path>
+                                      <text class='circle-text' x="50%" y="50%">{{percentageLoggedDays}}</text>
+                                    </svg>
+                                  </div>
+                                </div>
+                              <br>
+                                <div class='flx'>
+                                  Activated {{ nbOfActivatedDays }} 
+                                  <div class="flx-item">
+                                    days out of {{ totalDays }}
+                                    <svg class="circle-progress" viewBox="0 0 36 36">
+                                      <path class='circle-path' d="M18 2a16 16 0 010 32 16 16 0 010-32" attr.stroke-dasharray="{{ratioNumberOfDaysActivated}}, 100"></path>
+                                      <text class='circle-text' x="50%" y="50%">{{percentOfDaysActivated}}</text>
+                                    </svg>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- </div> -->
+                            </div>
+
+<!--                           <div class="col-lg-7 align-self-center">
+
+                              <div class="left-chart">
+                              
+                              <div class="left-text">
+                                <h4>Creation date: {{ user.date_manager.d_creation | date: 'dd/MM/yyyy'}}</h4>
+                                <p>Last connection: {{  getLastConnection() | date: 'dd/MM/yyyy' }}</p> 
+                                
+                                <div class="main-white-button"><a href="listing.html"><i class="fa fa-eye"></i> More Listing</a></div>                                 
+                              </div> 
+                            </div>
+-->
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="thumb">
+                          <div class="row main-block">
+                            UNDEFINED YET
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="thumb">
+                          <div class="row main-block">
+                            UNDEFINED YET
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>          
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+    </div>
+  </div>
+  

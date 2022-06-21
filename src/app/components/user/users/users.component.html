@@ -1,0 +1,218 @@
+<mat-tab-group dynamicHeight [(selectedIndex)]="matTabIndex">
+    <mat-tab label="Users">
+        <!-- CONTACT -->
+        <section class="contact">
+            <div class="container">
+
+                <!-- <mat-form-field appearance="fill" style="width: 10%;  margin-left:65%;">
+            <mat-label>Order by:</mat-label>
+            <select [(ngModel)]="sortedBy" matNativeControl (change)="sortBy()">
+                <option value="id">id</option>
+                <option value="role">role</option>
+                <option value="activated">activated</option>
+                <option value="pseudo">pseudonyme</option>
+                <option value="email">email</option>
+                <option value="d_creation">creation date</option>
+            </select>
+        </mat-form-field> -->
+                <!-- <div class="example-box" *ngFor="let user of dataSource" cdkDrag> -->
+
+                <div class="row">
+
+                    <div class="register">
+                        <div class="st-register-title text-center">
+                            <h3> Administration zone </h3>
+                            <p> Drag-Drop an user to activate/desactivate him </p>
+                        </div>
+
+                        <!-- <div cdkDropList (cdkDropListDropped)="drop($event)" class="example-list">
+                            <div *ngFor="let user of dataSource" (click)="navigateToProfile(user.id)" class="example-box"
+                                cdkDrag>
+    
+                                <div class="col contact-info">
+                                    <p class="left-element"><i class="fa fa-flag"></i> <strong>{{user.username}}</strong>
+                                    </p>
+                                    <p class="left-element"><i class="fa fa-envelope-o"></i> <strong>{{user.email}}</strong>
+                                    </p>
+                                </div>
+    
+                                <div class="col contact-info">
+                                    <p class="contact-role text-uppercase no-color"><i class="fa fa-shield"></i>
+                                        <strong>{{user.role.name}}</strong>
+                                    </p>
+                                    <p class="left-element"><i class="fa fa-map-marker"></i> <strong>{{user.d_creation |
+                                        date: 'dd/MM/yyyy'}}</strong></p>
+                                </div>
+
+
+                                <div class="col contact-form">
+                                    <p class="contact-role text-uppercase"><i class="fa fa-none"></i> </p>
+                                    <input [disabled]="user.role.name === 'astek'" type="submit"
+                                        value="{{ user.activated? 'Desactivate' : 'Activate' }}" name="contact-submit"
+                                        (click)="activate(user.id); $event.stopPropagation()">
+                                </div>
+                            </div>
+                        </div> -->
+                    <!-- </div> -->
+                </div>
+
+                <div class="row">
+                    <div class="col example-container">
+                        <h2>Desactivated</h2>
+                    
+                        <div
+                        cdkDropList
+                        #desactivatedList="cdkDropList"
+                        [cdkDropListData]="desactivatedUsers"
+                        [cdkDropListConnectedTo]="[activatedList]"
+                        class="example-list"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="example-box" *ngFor="let user of desactivatedUsers" (click)="navigateToProfile(user)" cdkDrag>{{user}}</div>
+                        </div>
+                    </div>
+
+                    <div class="col sort-container">
+                        <mat-form-field class="align-right">
+                            <!-- <mat-label>Order by:</mat-label> -->
+                            <select [(ngModel)]="sortedActivatedBy" matNativeControl (change)="sortDesactivatedBy()">
+                                <option value="id">id</option>
+                                <option value="role">role</option>
+                                <option value="pseudo">pseudonyme</option>
+                                <option value="email">email</option>
+                                <option value="d_creation">creation date</option>
+                            </select>
+                        </mat-form-field>  
+                    </div> 
+                    
+                    <div class="col example-container">
+                        <h2>Activated</h2>
+                    
+                        <div
+                        cdkDropList
+                        #activatedList="cdkDropList"
+                        [cdkDropListData]="activatedUsers"
+                        [cdkDropListConnectedTo]="[desactivatedList]"
+                        class="example-list"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="example-box" *ngFor="let user of activatedUsers" (click)="navigateToProfile(user)" cdkDrag>{{user}}</div>
+                        </div>
+                    </div>   
+                    
+                    <div class="col sort-container">
+                        <mat-form-field class="align-right">
+                            <!-- <mat-label>Order by:</mat-label> -->
+                            <select [(ngModel)]="sortedDesactivatedBy" matNativeControl (change)="sortActivatedBy()">
+                                <option value="id">id</option>
+                                <option value="role">role</option>
+                                <option value="pseudo">pseudonyme</option>
+                                <option value="email">email</option>
+                                <option value="d_creation">creation date</option>
+                            </select>
+                        </mat-form-field>  
+                    </div> 
+                    
+                </div>
+            </div> 
+
+            </div>
+        </section>
+        <!-- /CONTACT -->
+    </mat-tab>
+    <!-- <mat-tab label="Users">
+
+
+      
+        <div cdkDropList style="width: 50%;  margin-left:25%;" (cdkDropListDropped)="drop($event)">
+            <mat-card *ngFor="let user of dataSource" class="card" [ngClass]="{
+        'uActivated' : user.activated,
+        'uNonActivated' : !user.activated
+    }"  (click)="navigateToProfile(user.id)" cdkDrag>
+                <div>
+                    <div style="margin-left:30px;">
+                        <button *ngIf="user.role.name != 'astek'" mat-flat-button color="primary"
+                            class="btn-float-right" (click)="activate(user.id); $event.stopPropagation()">
+                            {{ user.activated? 'Desactivate' : 'Activate' }}
+                        </button>                        
+
+                        <h2>#{{user.id}} {{user.username}} [{{user.role.name}}]</h2>
+                        
+                        <small>{{user.email}}, since {{user.d_creation | date: 'dd/MM/yyyy'}}</small>                       
+                    </div>
+                </div>
+            </mat-card>
+
+        </div> 
+    </mat-tab>-->
+
+
+    <!-- <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let user of dataSource" cdkDrag>
+            <div>
+                <div style="margin-left:30px;">
+                    <button *ngIf="user.role.name != 'astek'" mat-flat-button color="primary"
+                        class="btn-float-right" (click)="activate(user.id); $event.stopPropagation()">{{
+                        user.activated? 'Desactivate' : 'Activate' }}</button>
+                    <h2>#{{user.id}} {{user.username}} [{{user.role.name}}]</h2>
+                    <small>{{user.email}}, since {{user.d_creation | date: 'dd/MM/yyyy'}}</small>
+                </div>
+            </div>
+        </div> 
+    </div>-->
+
+    <mat-tab *ngIf="(dataSourceSelected)" label="User {{dataSourceSelected?.pseudo}}">
+
+        <h3 style="text-align: center; padding-top: 5em"></h3>
+        <div class="main-div" style="width: 50%;  margin-left:25%;">
+            <mat-card class="card">
+                <mat-card-header>
+                    <mat-card-title>#{{dataSourceSelected.id}} {{dataSourceSelected.pseudo}} </mat-card-title>
+
+                    <mat-card-subtitle>{{dataSourceSelected.email}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>Depuis: {{dataSourceSelected.d_creation | date: 'dd/MM/yyyy'}}</p>
+                    <p>Role: {{savedRoleName}} #{{savedRoleId}}</p>
+
+                    <div *ngIf="canUpdateRoleOf(dataSourceSelected.role.name)">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Role:</mat-label>
+                            <select [(ngModel)]="dataSourceSelected.role.name" matNativeControl>
+                                <option *ngIf="canUpgradeTo('astek', dataSourceSelected.role.name)" value="astek">astek
+                                </option>
+                                <option *ngIf="canUpgradeTo('admin', dataSourceSelected.role.name)" value="admin">admin
+                                </option>
+                                <option *ngIf="canUpgradeTo('lord', dataSourceSelected.role.name)" value="lord">lord
+                                </option>
+                                <option *ngIf="canUpgradeTo('buddy', dataSourceSelected.role.name)" value="buddy">buddy
+                                </option>
+                                <option *ngIf="canUpgradeTo('user', dataSourceSelected.role.name)" value="user">user
+                                </option>
+                            </select>
+                        </mat-form-field>
+                        <button mat-flat-button color="primary"
+                            (click)="updateRole(); $event.stopPropagation()">save</button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+
+        <!-- Drag&Drop sorting -->
+        <!-- <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let user of dataSource" cdkDrag>
+                <div>
+                    <div style="margin-left:30px;">
+                        <button *ngIf="user.role.name != 'astek'" mat-flat-button color="primary"
+                            class="btn-float-right" (click)="activate(user.id); $event.stopPropagation()">{{
+                            user.activated? 'Desactivate' : 'Activate' }}</button>
+                        <h2>#{{user.id}} {{user.username}} [{{user.role.name}}]</h2>
+                        <small>{{user.email}}, since {{user.d_creation | date: 'dd/MM/yyyy'}}</small>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </mat-tab>
+</mat-tab-group>
+
+
+<!-- <script type="text/javascript" src="../../styles/js/smoothscroll.js"></script> -->

@@ -1,0 +1,44 @@
+<mat-tab-group dynamicHeight>
+    <mat-tab label="User {{dataSource.pseudo}}">
+
+        <h3 style="text-align: center; padding-top: 5em"></h3>
+        <div *ngIf="(dataSource)" class="main-div">
+            <mat-card class="card">
+                <mat-card-header>
+                    <!-- <div mat-card-avatar>
+                <img src="{{origin}}/api/users/profile-image/{{user.profileImage}}" class="header-image">
+            </div> -->
+                    <mat-card-title>#{{dataSource.id}} {{dataSource.pseudo}} </mat-card-title>
+
+                    <mat-card-subtitle>{{dataSource.email}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>Depuis: {{dataSource.d_creation | date: 'dd/MM/yyyy'}}</p>
+                    <p>Role: {{savedRoleName}} #{{savedRoleId}}</p>
+
+                    <div *ngIf="canUpdateRoleOf(dataSource.role.name)">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Role:</mat-label>
+                            <select [(ngModel)]="dataSource.role.name" matNativeControl>
+                                <option *ngIf="canUpgradeTo('astek', dataSource.role.name)" value="astek">astek</option>
+                                <option *ngIf="canUpgradeTo('admin', dataSource.role.name)" value="admin">admin</option>
+                                <option *ngIf="canUpgradeTo('lord', dataSource.role.name)" value="lord">lord</option>
+                                <option *ngIf="canUpgradeTo('buddy', dataSource.role.name)" value="buddy">buddy</option>
+                                <option *ngIf="canUpgradeTo('user', dataSource.role.name)" value="user">user</option>
+                            </select>
+                        </mat-form-field>
+                        <button mat-flat-button color="primary"
+                            (click)="updateRole(); $event.stopPropagation()">save</button>
+                        <!-- <h2>Blog Entries of {{user.username}}</h2> -->
+                        <!-- <app-all-blog-entries [blogEntries] ="(blogEntries$ | async)" (paginate)="onPaginateChange($event)"></app-all-blog-entries> -->
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </mat-tab>
+
+    
+</mat-tab-group>
+
+
+<!-- dataSource -->

@@ -1,0 +1,33 @@
+<!-- Update navbar color if user logged -->
+<mat-toolbar  [ngClass]="{'logged' : isAuth(), 'unlogged' : !isAuth() }">
+  <mat-toolbar-row>
+
+    <!-- <span routerLink="/home" class="home-link">Home</span> -->
+    <span routerLink="/" class="home-link"> {{ homeBtnText }} </span>
+    <span class="example-spacer"></span>
+
+
+    <div *ngIf="isAuth()">
+      
+      <button *ngIf="isAdminOrAstek()" [ngClass]="{'active' : isCurrentRoute('users')}" mat-flat-button routerLink="users">Users</button>
+      <button [ngClass]="{'active' : isCurrentRoute('user')}" mat-flat-button style="margin-left: 20px;" routerLink="user">Profile</button>
+
+      <button *ngIf="isAdminOrAstek()" [ngClass]="{'active' : isCurrentRoute('admin')}" mat-flat-button style="margin-left: 20px;" routerLink="admin">Admin</button>        
+      <button mat-flat-button style="margin-left: 20px;" (click)="logout()">Logout</button>
+    </div>
+
+    <div *ngIf="!isAuth()">
+      <button [ngClass]="{'active' : isCurrentRoute('login')}" mat-flat-button style="margin-left: 20px;" routerLink="login">Login</button>
+      <button [ngClass]="{'active' : isCurrentRoute('register')}" mat-flat-button style="margin-left: 20px;" routerLink="register">Register</button>
+    </div>
+  </mat-toolbar-row> 
+</mat-toolbar>
+
+
+<snackbar-error></snackbar-error>
+
+<div [@routeAnimations]="getRouteAnimationData()">  
+  <router-outlet></router-outlet>
+  <!-- <button class = "back-btn" mat-flat-button (click)="back()">Back</button> -->
+</div>
+

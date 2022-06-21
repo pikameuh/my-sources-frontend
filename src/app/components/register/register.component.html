@@ -1,0 +1,88 @@
+<mat-tab-group dynamicHeight>
+
+    <mat-tab label="Register">
+
+        <!-- SUBSCRIBE -->
+        <section class="register">
+            <div class="color-overlay"></div><!-- /COLOR OVERLY -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 register-form">
+                        <div class="st-register-title text-center">
+                            <h3> {{ registerMainText }} </h3>
+                            <p>  {{ registerParaText }} </p>
+                        </div>
+
+                        <form id="register" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+                            <input placeholder="Pseudonyme" formControlName="pseudo" type="fullsize-input" value="" name="register-pseudo" id="st-pseudo">
+                            <input placeholder="Username (for login)" formControlName="username" type="fullsize-input" value="" name="register-username" id="st-username">
+                            <input placeholder="Email" formControlName="email" type="fullsize-input" value="" name="register-email" id="st-email">
+
+                            <input placeholder="Password" formControlName="password" type="fullsize-input" value="" name="register-password" id="st-password">
+                            <input placeholder="Password Confirmation" formControlName="confirmPassword" type="partsize-input" value="" name="register-confirmPassword" id="st-password">
+                            <!-- <div class="container"> -->
+                                <!-- <mat-form-field>
+                                    <input type="pseudo" matInput placeholder="Pseudonyme (displayed on the UI)" formControlName="pseudo">
+                                    <mat-hint *ngIf="registerForm.get('pseudo').errors">Pseudonyme is required</mat-hint>
+                                </mat-form-field>
+                
+                                <mat-form-field>
+                                    <input type="username" matInput placeholder="Username (for login action)" formControlName="username">
+                                    <mat-hint *ngIf="registerForm.get('username').errors">Username is required</mat-hint>
+                                </mat-form-field>
+                
+                                <mat-form-field>
+                                    <input type="email" id="st-register" matInput placeholder="Email" formControlName="email">
+                                    <mat-hint *ngIf="registerForm.get('email').errors">Email is required</mat-hint>
+                                </mat-form-field>
+                
+                                <mat-form-field>
+                                    <input type="password" matInput type="password" placeholder="Password" formControlName="password">
+                                    <mat-hint *ngIf="registerForm.get('password').errors">Password is required</mat-hint>
+                                </mat-form-field>
+                                <small *ngIf="registerForm.get('password').hasError('passwordInvalid')">Password is not containing a
+                                    number</small>
+                
+                                <mat-form-field>
+                                    <input type="password" matInput type="password" placeholder="Password Confirmation"
+                                        formControlName="confirmPassword">
+                                    <mat-hint *ngIf="registerForm.hasError('passwordsNotMatching')">Passwords not matching</mat-hint>
+                                </mat-form-field> -->
+
+                                <!-- <input type="submit" name="register-submit" value="Subscribe"> -->
+                
+                                <input [disabled]="isRegisterFormValids()" type="submit" name="register-submit" value="Register">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /SUBSCRIBE -->
+    </mat-tab>
+      <mat-tab label="Resend e-mail">
+        <!-- resend -->
+        <section class="register resend">
+            <div class="color-overlay"></div><!-- /COLOR OVERLY -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 register-form">
+                        <div class="st-register-title text-center">
+                            <h3> {{ registerResendMainText }} </h3>
+                            <p>  {{ registerResendParaText }} </p>
+                        </div>
+                        <!-- FORM -->
+                        <form [formGroup]="resendMailForm" (ngSubmit)="resendConfirmationEmail()">
+                            <input type="email" value="" name="resend-email" id="st-email" placeholder="Enter your e-mail" formControlName="email" type="partsize-input" value="" name="resend-email" id="st-email">
+                            <input [disabled]="isResendFormValids()" type="submit" name="resend-submit" value="Resend e-mail">
+                            <label for="st-email" class="st-resend-message"></label>
+                        </form>
+                        <!-- /FORM -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /resend -->
+    </mat-tab>
+
+</mat-tab-group>
